@@ -85,15 +85,129 @@ Flash by copying `firmware.bin` to the SD card root and powering on.
 
 ## First-Flash Calibration Sequence
 
-1. `M502` + `M500` — reset EEPROM to firmware defaults
-2. `M303 E0 S210 C15` — PID autotune hotend (thermistor changed from stock)
-3. `M301 P<p> I<i> D<d>` + `M500` — save PID results
-4. Motion > Bed Tramming — level corners using CR Touch feedback
-5. `G28` then `G29` — home and run bed mesh
-6. `M851` / Probe Z Offset wizard — calibrate Z offset
-7. Calibrate e-steps (extrude 100mm, measure, adjust `M92 E<value>`)
-8. Print a ringing tower to tune Input Shaping frequencies
-   - Adjust with `M593 X F<hz>` and `M593 Y F<hz>` + `M500`
+Do these steps **in order** after flashing for the first time, or after any firmware rebuild.
+
+### Step 1 — Reset EEPROM
+
+Send via terminal (OctoPrint, Pronterface, or the printer's USB):
+
+```
+M502   ; reset all settings to firmware defaults
+M500   ; save to EEPROM
+```
+
+> Do this before anything else — old EEPROM values from a previous firmware will cause unpredictable behaviour.
+
+---
+
+### Step 2 — PID Autotune (hotend)
+
+The Sprite Pro heater block differs from stock. Run autotune so thermal runaway doesn't trip during prints:
+
+```
+M303 E0 S210 C15   ; heat to 210°C, 15 cycles
+```
+
+When it finishes it will print `Kp`, `Ki`, `Kd` values. Save them:
+
+```
+M301 P<Kp> I<Ki> D<Kd>
+M500
+```
+
+---
+
+### Step 3 — Bed Tramming (manual levelling)
+
+Before running the mesh, get the bed roughly level by hand:
+
+1. Home the printer: `G28`
+2. On the LCD: **Motion → Bed Tramming**
+3. Work through each corner — the CR Touch will measure the height and prompt you to turn the knob
+4. Repeat until all corners read within ~0.1 mm of each other
+
+---
+
+### Step 4 — Bed Mesh (auto bed levelling)
+
+```
+G28    ; home all axes
+G29    ; probe 5×5 mesh
+M500   ; save mesh to EEPROM
+```
+
+---
+
+### Step 5 — Z Offset Calibration
+
+Use the wizard on the LCD: **Motion → Probe Z Offset**, or send:
+
+```
+G28
+M851 Z0         ; reset offset
+G1 Z0 F300      ; move to Z=0
+```
+
+Slide a sheet of paper under the nozzle and adjust until you feel slight drag. Note the Z reading and set it:
+
+```
+M851 Z-<value>  ; e.g. M851 Z-2.06
+M500
+```
+
+> Re-run this any time you adjust the probe mount or change nozzles.
+
+---
+
+### Step 6 — E-Step Calibration
+
+The firmware ships with a starting value of 439.45 steps/mm. Verify it:
+
+1. Heat hotend to 200°C
+2. Mark the filament 100mm above the extruder entrance
+3. Send: `G1 E100 F100`
+4. Measure how much filament actually moved
+5. Calculate: `new_steps = 439.45 × (100 / actual_mm)`
+6. Set and save:
+
+```
+M92 E<new_steps>
+M500
+```
+
+---
+
+### Step 7 — Linear Advance Tuning
+
+Linear Advance K is set to 0.09 as a starting point for the Sprite Pro. Print a [LA calibration pattern](https://marlinfw.org/tools/lin_advance/k-factor.html) and adjust:
+
+```
+M900 K<value>   ; e.g. M900 K0.05
+M500
+```
+
+---
+
+### Step 8 — Input Shaping Tuning
+
+Input shaping is enabled at 40 Hz / zeta 0.15 as a starting point. To tune:
+
+1. Print a ringing tower (search: "Marlin input shaping tower")
+2. Identify the layer where ringing stops — that corresponds to a frequency
+3. Adjust per axis:
+
+```
+M593 X F<hz>    ; e.g. M593 X F37
+M593 Y F<hz>
+M500
+```
+
+---
+
+### Step 9 — First Print
+
+- Use **baby stepping** during the first layer to fine-tune Z height live (double-click the knob)
+- Run another `G29` + `M500` after the printer is fully warmed up for the most accurate mesh
 
 ---
 
