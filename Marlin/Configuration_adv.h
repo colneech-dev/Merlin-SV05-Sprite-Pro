@@ -3763,24 +3763,24 @@
   //#define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
   #define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
 
-  #define MAIN_MENU_ITEM_1_DESC "Level Bed & Save"
-  #define MAIN_MENU_ITEM_1_GCODE "G28\nG29\nM500"
-  //#define MAIN_MENU_ITEM_1_CONFIRM           // Show a confirmation dialog before this action
+  #define MAIN_MENU_ITEM_1_DESC "Full Autotune"
+  #define MAIN_MENU_ITEM_1_GCODE "M117 Hotend autotune...\nM306 T\nM117 Bed autotune...\nM303 E-1 S60 C8 U1\nM117 Saving...\nM500\nM117 Autotune complete!"
+  //#define MAIN_MENU_ITEM_1_CONFIRM
 
-  #define MAIN_MENU_ITEM_2_DESC "Prep Z Offset"
-  #define MAIN_MENU_ITEM_2_GCODE "M420 S0\nG28\nG0 X110 Y110 F3000\nG0 Z-2 F300"
+  #define MAIN_MENU_ITEM_2_DESC "Level Bed & Save"
+  #define MAIN_MENU_ITEM_2_GCODE "M117 Homing...\nG28\nM117 Probing bed...\nG29\nM117 Saving mesh...\nM500\nM117 Bed levelling done!"
   //#define MAIN_MENU_ITEM_2_CONFIRM
 
-  #define MAIN_MENU_ITEM_3_DESC "Save Z & Mesh"
-  #define MAIN_MENU_ITEM_3_GCODE "M420 S1\nM500"
+  #define MAIN_MENU_ITEM_3_DESC "Paper Test"
+  #define MAIN_MENU_ITEM_3_GCODE "M117 Disabling mesh...\nM420 S0\nM117 Homing...\nG28\nM117 Moving to centre...\nG0 X110 Y110 F3000\nM117 Lowering nozzle...\nG0 Z0 F300\nM0 Adjust Z with knob then select Save Z Offset"
   //#define MAIN_MENU_ITEM_3_CONFIRM
 
-  #define MAIN_MENU_ITEM_4_DESC "MPC Autotune"
-  #define MAIN_MENU_ITEM_4_GCODE "M306 T"
+  #define MAIN_MENU_ITEM_4_DESC "Save Z Offset"
+  #define MAIN_MENU_ITEM_4_GCODE "M117 Saving...\nM420 S1\nM500\nM117 Z offset saved!"
   //#define MAIN_MENU_ITEM_4_CONFIRM
 
-  #define MAIN_MENU_ITEM_5_DESC "Bed PID Tune"
-  #define MAIN_MENU_ITEM_5_GCODE "M303 E-1 S60 C8 U1\nM500"
+  //#define MAIN_MENU_ITEM_5_DESC
+  //#define MAIN_MENU_ITEM_5_GCODE
   //#define MAIN_MENU_ITEM_5_CONFIRM
 #endif
 
