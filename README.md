@@ -45,7 +45,7 @@ Custom Marlin firmware build for the **Sovol SV05** 3D printer fitted with a **C
 
 - Auto Bed Levelling (bilinear 5×5 mesh, double-probing for accuracy)
 - Probe-assisted bed tramming (CR Touch guides corner adjustment)
-- Levelling always enabled after G28
+- Levelling restored after G28, enabled for every print via M420 S1 in start G-code
 - Custom menu with 6 items:
   1. **Full Autotune** — MPC hotend + bed PID autotune, saves to EEPROM
   2. **Level Bed & Save** — homes, probes 5×5 mesh, saves to EEPROM
