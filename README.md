@@ -52,7 +52,7 @@ Custom Marlin firmware build for the **Sovol SV05** 3D printer fitted with a **C
   3. **Paper Test** — disables mesh, homes, moves to centre at Z=0 for Z offset calibration
   4. **Save Z Offset** — re-enables mesh, saves Z offset to EEPROM
   5. **————** — separator (prevents accidental Reset EEPROM)
-  6. **Reset EEPROM** — full factory reset: resets EEPROM, runs full autotune, re-levels bed (confirm required)
+  6. **Reset EEPROM** — resets EEPROM to firmware defaults (M502+M500), then prompts to run Full Autotune (confirm required)
 - Babystepping (always available, 0.05mm per click, updates M851 Z offset directly)
 - Model Predictive Control (MPC) hotend temperature — replaces PID for more stable heating
 - PID bed temperature control — smoother than bang-bang
@@ -128,7 +128,7 @@ You will need a USB terminal to send G-code commands. Options:
 
 **Option A — Custom menu (easiest):**
 
-From the printer LCD, open the custom menu and select **Reset EEPROM**. Confirm when prompted. This will reset EEPROM, run full autotune, and re-level the bed automatically — skip straight to Step 6 (Z Offset) after this.
+From the printer LCD, open the custom menu and select **Reset EEPROM**. Confirm when prompted. Once complete, run **Full Autotune** followed by **Level Bed & Save** from the same menu.
 
 **Option B — Via USB terminal:**
 
