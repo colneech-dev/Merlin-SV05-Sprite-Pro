@@ -41,7 +41,7 @@
     "machine_steps_per_mm_z": { "default_value": 400 },
     "machine_steps_per_mm_e": { "default_value": 439.45 },
     "machine_start_gcode": {
-      "default_value": "; Sovol SV05 Sprite Pro start G-code\nM140 S{material_bed_temperature_layer_0} ; start bed heating\nM104 S150 ; preheat hotend (no ooze)\nG28 ; home all axes\nM420 S1 ; restore saved bed mesh\nM109 S{material_print_temperature_layer_0} ; wait for hotend\nM190 S{material_bed_temperature_layer_0} ; wait for bed\nG1 Z5 F3000\nG1 X-1 Y0 F3000\nG1 Z0.3 F300\nG92 E0\nG1 Y220 E20 F500 ; purge line front to back\nG1 Y0 E40 F500 ; purge line back to front\nG1 Y55 E45 F500 ; purge line 1/4 bed\nG92 E0\nG1 Z2 F3000"
+      "default_value": "; Sovol SV05 Sprite Pro start G-code\nM140 S{material_bed_temperature_layer_0} ; start bed heating\nM104 S150 ; preheat hotend (no ooze)\nG28 ; home all axes\nM420 S1 ; restore saved bed mesh\nM109 S{material_print_temperature_layer_0} ; wait for hotend\nM190 S{material_bed_temperature_layer_0} ; wait for bed\nG1 Z5 F3000\nG1 X0 Y0 F3000\nG1 Z0.3 F300\nG92 E0\nG1 Y200 E20 F500 ; purge line front to back\nG1 Y0 E40 F500 ; purge line back to front\nG1 Y50 E45 F500 ; purge line 1/4 bed\nG92 E0\nG1 Z2 F3000"
     },
     "machine_end_gcode": {
       "default_value": "; End G-code\nG91\nG1 E-2 F2700 ; retract\nG1 Z10 F3000 ; lift\nG90\nG1 X10 Y200 F3000 ; park\nM104 S0\nM140 S0\nM107\nM84"

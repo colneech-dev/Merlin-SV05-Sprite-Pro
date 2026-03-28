@@ -348,12 +348,12 @@ M420 S1                ; restore saved bed mesh from EEPROM
 M109 S[hotend_temp]    ; wait for hotend temp
 M190 S[bed_temp]       ; wait for bed temp
 G1 Z5 F3000            ; lift nozzle
-G1 X-1 Y0 F3000        ; move to left edge (outside print area)
+G1 X0 Y0 F3000         ; move to left edge
 G1 Z0.3 F300           ; drop to purge height
 G92 E0                 ; reset extruder
-G1 Y220 E20 F500       ; purge line — front to back (full bed length)
+G1 Y200 E20 F500       ; purge line — front to back
 G1 Y0 E40 F500         ; purge line — back to front
-G1 Y55 E45 F500        ; purge line — 1/4 bed
+G1 Y50 E45 F500        ; purge line — 1/4 bed
 G92 E0                 ; reset extruder
 G1 Z2 F3000            ; lift before print
 ```
