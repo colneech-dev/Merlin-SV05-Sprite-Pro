@@ -52,5 +52,5 @@
   "layer_change_gcode": "",
   "change_filament_gcode": "",
 
-  "printer_notes": "Sovol SV05 + Creality Sprite Pro direct drive\nCR Touch probe: X=-37.5 Y=+6.2 Z=-3.43\nHomes X/Y to MAX (rear-right), Z to MIN\nMarlin 2.1.2.7 custom firmware"
+  "printer_notes": "Sovol SV05 + Creality Sprite Pro direct drive\nCR Touch probe: X=-37.5 Y=+6.2 Z=-3.15\nHomes X/Y to MAX (rear-right), Z to MIN\nMarlin 2.1.2.7 custom firmware"
 }

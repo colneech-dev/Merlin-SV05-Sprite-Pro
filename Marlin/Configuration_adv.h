@@ -3764,7 +3764,7 @@
   #define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
 
   #define MAIN_MENU_ITEM_1_DESC "Level Bed & Save"
-  #define MAIN_MENU_ITEM_1_GCODE "M851 Z-3.43\nM500\nG28\nG29\nM500"
+  #define MAIN_MENU_ITEM_1_GCODE "M851 Z-3.15\nM500\nG28\nG29\nM500"
   //#define MAIN_MENU_ITEM_1_CONFIRM           // Show a confirmation dialog before this action
 
   #define MAIN_MENU_ITEM_2_DESC "Prep Z Offset"
