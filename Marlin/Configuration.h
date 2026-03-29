@@ -1524,7 +1524,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -37.5, 6.2, -3.15 } // CR Touch on Sprite Pro slim mount — XY measured by centering probe, Z calibrated with live baby-step tuning
+#define NOZZLE_TO_PROBE_OFFSET { -37.5, 6.2, -11.975 } // CR Touch on Sprite Pro slim mount — XY measured by centering probe, Z calibrated with live baby-step tuning
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1749,7 +1749,7 @@
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
-#define Z_MIN_POS -5
+#define Z_MIN_POS -15
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 300
