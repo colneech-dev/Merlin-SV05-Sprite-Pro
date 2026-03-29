@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pio run:*)"
+      "Bash(pio run:*)",
+      "Bash(powershell -Command \"Compress-Archive -Path ''machine'',''filament'',''process'' -DestinationPath ''SV05 Sprite Pro Bundle.orca_printer'' -Force\")",
+      "Bash(powershell -Command \"Compress-Archive -Path ''machine'',''filament'',''process'' -DestinationPath ''SV05 Sprite Pro Bundle.zip'' -Force; Rename-Item ''SV05 Sprite Pro Bundle.zip'' ''SV05 Sprite Pro Bundle.orca_printer''\")",
+      "Bash(powershell -Command \"Add-Type -Assembly System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::OpenRead\\(''SV05 Sprite Pro Bundle.orca_printer''\\).Entries | Select-Object FullName\")"
     ]
   }
 }

@@ -1524,7 +1524,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -37.5, 6.2, -11.975 } // CR Touch on Sprite Pro slim mount — XY measured by centering probe, Z calibrated with live baby-step tuning
+#define NOZZLE_TO_PROBE_OFFSET { -37.5, 6.2, -2.06 } // CR Touch on Sprite Pro slim mount — XY measured by centering probe, Z calibrated with live baby-step tuning
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1615,7 +1615,7 @@
 #define Z_PROBE_LOW_POINT          -10 // (mm) Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -20
+#define Z_PROBE_OFFSET_RANGE_MIN -50
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
@@ -1749,7 +1749,7 @@
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
-#define Z_MIN_POS -15
+#define Z_MIN_POS -5
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 300
